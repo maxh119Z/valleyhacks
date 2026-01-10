@@ -1,0 +1,502 @@
+/* --- HelloFresh-Inspired Variables --- */
+:root {
+    --hf-green: #067A46;       /* The core HelloFresh Green */
+    --hf-green-dark: #045a32;
+    --hf-lime: #9ECE1A;        /* Fresh accent lime */
+    --hf-navy: #242424;        /* Primary text */
+    --hf-grey: #707070;        /* Secondary text */
+    --hf-bg: #F9F9F9;          /* Light background */
+    --hf-white: #FFFFFF;
+    --hf-alert: #D9534F;
+    --hf-warning: #F4B400;
+    
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+    --shadow-card: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* --- Base Typography & Reset --- */
+body { 
+    background-color: var(--hf-bg); 
+    color: var(--hf-navy); 
+    font-family: 'Nunito', sans-serif; /* "Human" body font */
+    margin: 0; 
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .btn {
+    font-family: 'Poppins', sans-serif; /* Geometric heading font */
+    letter-spacing: -0.5px;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;
+    padding-top: 50px;
+}
+
+/* --- Navigation --- */
+.navbar {
+    background: var(--hf-green);
+    padding: 15px 30px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 500;
+    
+    box-sizing: border-box;
+    
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.user-info {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+     font-family: 'Poppins', sans-serif !important;
+     color: white !important;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:white !important;
+}
+
+.lime-dot { color: var(--hf-lime); font-size: 2rem; line-height: 0; }
+
+.logout-link {
+    text-decoration: none;
+    color: white !important;
+    background-color: #ca5c55;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+/* --- Buttons --- */
+.btn { 
+    padding: 12px 24px; 
+    border-radius: 50px; /* Pill shape is key to HF style */
+    font-weight: 600; 
+    cursor: pointer; 
+    border: none; 
+    font-size: 1rem; 
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary { 
+    background: var(--hf-green); 
+    color: white; 
+}
+.btn-primary:hover { background: var(--hf-green-dark); box-shadow: 0 4px 10px rgba(6, 122, 70, 0.3); }
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #ddd;
+    color: var(--hf-grey);
+}
+
+.btn-danger {
+    background: #FFF0F0;
+    color: var(--hf-alert);
+}
+
+.btn-google { 
+    background: var(--hf-white); 
+    color: var(--hf-navy); 
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.google-icon { width: 18px; height: 18px; }
+
+/* --- Login Card --- */
+.login-card {
+    text-align: center;
+    background: white;
+    padding: 60px 20px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+
+.hero-title { font-size: 2rem; margin-bottom: 10px; }
+.hero-subtitle { color: var(--hf-grey); margin-bottom: 30px; }
+
+/* --- Dashboard --- */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 25px;
+    height: 70vh;
+}
+
+/* --- Cards & Sidebar --- */
+.card {
+    background: var(--hf-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+}
+
+.card-header {
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    color: var(--hf-navy);
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+/* Food Items (Sidebar) */
+.food-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+    /* overflow-x: scroll; */
+}
+.food-card > div:first-child {
+    flex: 1;
+    min-width: 0;
+}
+
+.food-card:hover { 
+    transform: translateX(4px); 
+    border-color: var(--hf-green);
+}
+
+.food-card strong { display: block; font-size: 0.95rem; overflow:hidden;text-overflow:ellipsis;white-space: nowrap;display:block;}
+.food-card small { color: var(--hf-grey); font-size: 0.8rem; }
+.days-left { font-weight: 800; font-size: 1.2rem; color: var(--hf-green); }
+
+/* Urgency Colors */
+.food-card.urgent { border-left: 4px solid var(--hf-alert); }
+.food-card.soon { border-left: 4px solid var(--hf-warning); }
+.food-card.safe { border-left: 4px solid var(--hf-green); }
+
+/* --- Calendar --- */
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.calendar-nav h2 { margin: 0; font-size: 1.2rem; }
+.nav-btn {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--hf-navy);
+}
+
+.calendar-header-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    color: var(--hf-grey);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 120px);
+    grid-auto-rows: 1fr;
+    gap: 8px;
+    height: 100%;
+}
+
+.cal-day {
+    border: 1px solid #f0f0f0;
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    position: relative;
+    min-height: 80px;
+    background: #fff;
+}
+
+.cal-day.today {
+    /* Keep the green border highlight */
+    border: 2px solid var(--hf-green);
+
+    /* 1. YOUR IMAGE (Make sure path is correct!) */
+    background-image: url('IMG_5393.jpg'); 
+    background-size: cover;
+    background-position: center;
+
+    /* 2. THE OPACITY TRICK */
+    /* This adds an 85% opaque white layer ON TOP of the image */
+    background-color: rgba(255, 255, 255, 0.85); 
+    
+    /* This blends the white layer with the image so it looks faded */
+    background-blend-mode: overlay; 
+}
+
+.day-number { 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    color: var(--hf-grey); 
+    margin-bottom: 5px; 
+}
+
+/* Calendar Pills */
+.cal-item-pill {
+    background: var(--hf-green);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.cal-item-pill.soon { background: var(--hf-warning); color: #333; }
+.cal-item-pill.urgent { background: var(--hf-alert); }
+
+/* --- Modal --- */
+.modal-content {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: left;
+    position: relative;
+}
+
+.close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; }
+
+.modal-header-section { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+.modal-header-section h2 { margin: 0 0 5px 0; color: var(--hf-navy); }
+.badge { background: #eee; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #555; }
+
+.modal-details { margin-bottom: 25px; }
+.detail-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f9f9f9; }
+.text-alert { color: var(--hf-alert); }
+
+.modal-actions { display: flex; flex-direction: column; gap: 10px; }
+.secondary-actions { display: flex; gap: 10px; }
+.secondary-actions .btn { flex: 1; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-grid { grid-template-columns: 1fr; height: auto; }
+    .sidebar { order: 2; height: 300px; }
+    .calendar-container { order: 1; height: 500px; }
+    .action-bar { flex-direction: column; gap: 15px; align-items: flex-start; }
+    .btn-camera { width: 100%; }
+}
+
+.hidden { display: none !important; }
+
+
+/* --- Modal Overlay (The background dimmer) --- */
+.modal {
+    position: fixed; /* Stays in place when scrolling */
+    z-index: 1000;   /* Sits on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dimmed background */
+    
+    /* Flexbox Magic to Center the Box */
+    display: flex;
+    align-items: center;     /* Vertical Center */
+    justify-content: center; /* Horizontal Center */
+    
+    /* Animation */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Hide it smoothly */
+.modal.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- CHATBOT STYLES --- */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--hf-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 2000;
+    transition: transform 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.05);
+    background: var(--hf-green-dark);
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+    overflow: hidden;
+    border: 1px solid #eee;
+    font-family: 'Nunito', sans-serif;
+}
+
+.chat-header {
+    background: var(--hf-green);
+    color: white;
+    padding: 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-chat { font-size: 1.5rem; cursor: pointer; }
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.message.bot {
+    background: white;
+    border: 1px solid #eee;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.message.user {
+    background: var(--hf-lime);
+    color: var(--hf-navy);
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+#chatInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    font-family: inherit;
+}
+
+.btn-send {
+    background: var(--hf-green);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 10000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+

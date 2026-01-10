@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FreshFirst - Community Pantry</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <div class="logo">FreshFirst <span class="lime-dot">.</span> <span <div>
+                    <a href="Instagram.html" class="btn"
+                        style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-left: 20px; margin-right: 10px; color: white !important;">
+                        Local Food Banks
+                    </a>
+                    <a href="index.html" class="btn"
+                        style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-left: 20px; margin-right: 10px; color: white !important;">
+                        My Kitchen
+                    </a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="login-card" style="max-width: 800px; text-align: left; padding: 40px;">
+                <h1 class="hero-title" style="font-size: 1.8rem;">Community Pantry</h1>
+                <p class="hero-subtitle">Fresh food by your neighbors!</p>
+
+                <div id="donationGrid" class="dashboard-grid"
+                    style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); height: auto; gap: 20px;">
+                    <p>Loading donations...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFirst - Community Updates</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Existing styles maintained */
+        .main-wrapper {
+            font-family: sans-serif;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .insta-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar {
+            background: var(--hf-green);
+            padding: 15px 30px;
+            display: flex;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 500;
+
+            box-sizing: border-box;
+
+            justify-content: flex-start;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <div class="logo">FreshFirst <span class="lime-dot">.</span></div>
+            <a href="index.html" class="btn"
+                style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-left: 20px; margin-right: 10px; color: white !important;">
+                My Kitchen
+            </a>
+            <a href="donate.html" class="btn"
+                style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-right: 10px; color: white !important;">
+                Community
+            </a>
+            <div id="newsTrigger" class="hidden" style="margin-left: auto; margin-right: 15px;">
+                <button id="openNewsBtn" class="btn btn-outline"
+                    style="padding: 5px 12px; font-size: 0.85rem; border: 1px solid #4285F4; color: #4285F4; background: transparent; border-radius: 8px; cursor: pointer;">📰
+                    News</button>
+            </div>
+        </nav>
+
+        <div class="news-header" style="text-align: center; padding: 40px 0; margin-top: 60px;">
+            <h1 class="hero-title">Local Updates</h1>
+            <p class="hero-subtitle">See what Bay Area food banks are doing today.</p>
+        </div>
+
+        <div class="container news-grid">
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-captioned
+                    data-instgrm-permalink="https://www.instagram.com/reel/DTJKKhBlWg4/" data-instgrm-version="14">
+                </blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-captioned
+                    data-instgrm-permalink="https://www.instagram.com/p/DTNkmu4ksoA/" data-instgrm-version="14">
+                </blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-captioned
+                    data-instgrm-permalink="https://www.instagram.com/p/DR1o4quCNWo/" data-instgrm-version="14">
+                </blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQNVIP_kkWv/"
+                    data-instgrm-version="14"></blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CC9kQjQH4Cs/"
+                    data-instgrm-version="14"></blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSTVidYEgjX/"
+                    data-instgrm-version="14"></blockquote>
+            </div>
+
+            <div class="insta-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSwImKKEfHa/"
+                    data-instgrm-version="14"></blockquote>
+            </div>
+
+        </div>
+    </div>
+
+    <script async src="//www.instagram.com/embed.js"></script>
+</body>
+
+</html>

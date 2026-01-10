@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FreshFirst</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client.js"></script>
+    <script defer src="script.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client.js"></script>
+    <script defer src="script.js"></script>
+    <script defer src="news.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="toast">Some text message..</div>
+
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <div class="logo">FreshFirst <span class="lime-dot">.</span></div>
+            <a href="Instagram.html" class="btn"
+                style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-left: 20px; margin-right: 10px; color: white !important;">
+                Local Food Banks
+            </a>
+            <a href="donate.html" class="btn"
+                style="background: var(--hf-lime); padding: 8px 15px; font-size: 0.85rem; margin-right: 10px; color: white !important;">
+                Community
+            </a>
+            <div id="newsTrigger" class="hidden" style="margin-left: auto; margin-right: 15px;">
+                <button id="openNewsBtn" class="btn btn-outline"
+                    style="padding: 5px 12px; font-size: 0.85rem; border: 1px solid #4285F4; color: #4285F4; background: transparent; border-radius: 8px; cursor: pointer;">📰
+                    News</button>
+            </div>
+
+            <div id="userInfo" class="user-info">
+                <span id="userName">Welcome</span>
+                <a href="#" id="logoutBtn" class="logout-link ">Log Out</a>
+            </div>
+        </nav>
+
+
+    </div>
+
+    <div class="container">
+        <div id="loginSection" class="login-card">
+            <h1 class="hero-title">Take control of food waste.</h1>
+            <p class="hero-subtitle">Add receipts, eat nutrious and fresh food.</p>
+            <button id="loginBtn" class="btn btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="G" class="google-icon">
+                Continue with Google
+            </button>
+        </div>
+
+        <div id="appSection" class="hidden">
+
+            <div class="action-bar">
+                <h2 class="section-title">My Kitchen</h2>
+                <div class="camera-wrapper">
+                    <label for="cameraInput" class="btn btn-primary btn-camera">
+                        Scan Receipt
+                    </label>
+                    <input type="file" id="cameraInput" accept="image/*" capture="environment">
+                </div>
+            </div>
+
+            <div id="previewContainer" class="hidden">
+                <img id="imagePreview">
+                <p id="statusMsg">Analyzing...</p>
+            </div>
+
+            <div class="dashboard-grid">
+
+                <aside class="sidebar card">
+                    <h3 class="card-header">Perishables</h3>
+                    <div id="triageList" class="scrollable-list">
+                    </div>
+                </aside>
+
+                <main class="calendar-container card">
+                    <div class="calendar-nav">
+                        <button id="prevMonth" class="nav-btn">❮</button>
+                        <h2 id="calendarTitle">January 2026</h2>
+                        <button id="nextMonth" class="nav-btn">❯</button>
+                    </div>
+
+                    <div class="calendar-header-row">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+
+                    <div id="calendarGrid" class="calendar-grid">
+                    </div>
+                </main>
+
+            </div>
+        </div>
+
+        <p id="load" class="loader">Loading System...</p>
+    </div>
+    </div>
+
+    <div id="itemModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <div class="modal-header-section">
+                <h2 id="modalTitle">Item Name</h2>
+                <span id="modalCategory" class="badge">Category</span>
+            </div>
+
+            <div class="modal-details">
+                <div class="detail-row">
+                    <span><b>Bought</b></span>
+                    <strong id="modalBought">-</strong>
+                </div>
+                <div class="detail-row">
+                    <span><b>Expires</b></span>
+                    <strong id="modalExpires" class="text-alert">-</strong>
+                </div>
+                <div class="detail-row">
+                    <span><b>Status</b></span>
+                    <strong id="modalDaysLeft">-</strong>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button id="addToCalBtn" class="btn btn-primary">Add to Calendar</button>
+                <div class="secondary-actions">
+                    <button id="editPerishBtn" class="btn btn-outline">Edit</button>
+                    <button id="deleteBtnModal" class="btn btn-danger">Remove</button>
+                    <button id="donateBtn" class="btn btn-outline"
+                        style="border-color: var(--hf-lime); color: var(--hf-green);">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="chatToggleBtn" class="chat-toggle-btn">
+        ChefBot
+    </button>
+
+    <div id="chatWindow" class="chat-window hidden">
+        <div class="chat-header">
+            <span>👨‍🍳 FreshFirst Chef</span>
+            <span id="closeChat" class="close-chat">&times;</span>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <div class="message bot">
+                Hello! I see some food expiring soon. Want a recipe idea? 🥗
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off">
+            <button id="sendChatBtn" class="btn-send">➤</button>
+        </div>
+    </div>
+    <div id="newsModal" class="modal hidden">
+        <div class="modal-content"
+            style="max-width: 500px; height: 85vh; display: flex; flex-direction: column; position: relative; background: white; border-radius: 20px; padding: 20px;">
+            <span id="closeNews" class="close"
+                style="position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer;">&times;</span>
+            <h2 style="margin-bottom: 15px; font-family: 'Poppins', sans-serif; text-align: center;">Community News</h2>
+
+            <iframe src="Instagram.html" style="flex-grow: 1; border: none; border-radius: 12px; width: 100%;"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
